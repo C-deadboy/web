@@ -1,0 +1,106 @@
+!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Regresiva Romántica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('river.jpg'); /* Ruta de la imagen de fondo */
+            background-size: fixer; /* Ajustar la imagen de fondo al tamaño del viewport */
+            background-position: center; /* Centrar la imagen de fondo */
+            background-attachment: fixed; 
+            background-repeat: no-repeat;
+            text-align: center;
+            color: #87CEEB; /* Color de texto blanco para que contraste con el fondo */
+        }
+        h1 {
+            color: #87CEEB;
+        }
+        #countdown {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+
+/* Estilo para ocultar el reproductor de audio */
+        #audio-container {
+            display: none;
+        }
+        /* Estilo para el botón */
+        #play-button {
+            background-color: #FFFFFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 40px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+        #play-button:hover {
+            background-color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>❤️Mi amor ya falta poco para vernos ❤️</h1>
+    <p>¡Faltan pocos días para el 19 de marzo!</p>
+    <div id="countdown"></div>
+
+    <script>
+        // Definir la fecha objetivo (19 de marzo)
+        const targetDate = new Date('2024-03-19T00:00:00').getTime();
+
+        // Actualizar el contador cada segundo
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Calculando días, horas, minutos y segundos
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Mostrar el contador en la página
+            document.getElementById('countdown').innerHTML = `
+                Faltan ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos
+                para el 19 de marzo.
+            `;
+
+            // Si el contador llega a cero, mostrar un mensaje
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById('countdown').innerHTML = " Por fin llego el dia mi amor  ❤️";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
+
+<!-- Botón para iniciar la reproducción de audio -->
+    <button id="play-button" onclick="startAudio()">STAR</button>
+
+    <!-- Audio oculto que se reproduce automáticamente -->
+    <div id="audio-container">
+        <audio id="audio" autoplay loop> 
+            <source src="dream.mp3" type="audio/mpeg">
+            Tu navegador no soporta la reproducción de audio.
+        </audio>
+    </div>
+
+    <script>
+        function startAudio() {
+            document.getElementById('audio').play();
+            document.getElementById('audio-container').style.display = 'block';
+            document.getElementById('play-button').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
+
